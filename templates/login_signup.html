@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<style>
+    .xcontain{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        width: 30vw;
+        margin: 0 auto;
+        margin-top: 12%;
+    }
+
+    .xcontain>h2{
+        font-size: 50px;
+    }
+
+    .ycontain{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        width: 30vw;
+        margin: 0 auto;
+        margin-top: 12%;
+
+    }
+
+    .ycontain>h2{
+        font-size: 50px;
+    }
+
+</style>
+
+{% if page == 'login' %}
+<div class="xcontain">
+    <h2 class="text-center mb-5 mt-3">Login</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control mb-2 mr-sm-2" name="username" placeholder="Enter username">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control mb-2 mr-sm-2" name="password" placeholder="Enter password">
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary mb-3" value="Login">
+        </div>
+        <div class="text-center mb-3">
+            <p>Havent signed up yet?</p>
+            <a href="{% url 'register' %}" class="mb-4">Signup</a>
+        </div>
+    </form>
+
+
+</div>
+
+{% else %}
+
+<div class="ycontain">
+    <h2 class="text-center mb-5 mt-3">Register</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control mb-2 mr-sm-2 " name="username" placeholder="Enter username">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control mb-2 mr-sm-2" name="password1" placeholder="Enter password">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control mb-2 mr-sm-2" name="password2" placeholder="Confirm password">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control mb-2 mr-sm-2" name="email" placeholder="Email Address">
+        </div>
+        <div>
+
+            <input type="submit" class="btn btn-primary mb-3" value="Register">
+        </div>
+
+        <div class="text-center mb-3">
+            <p>Already signed up yet?</p>
+            <a href="{% url 'login' %}" class="mb-4">Login</a>
+        </div>
+    </form>
+
+
+</div>
+
+{% endif %}
+
+{% endblock content %}

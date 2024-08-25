@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    a{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+
+    }
+
+    p{
+        color: white;
+    }
+</style>
+
+{% if request.user.is_authenticated %}
+<p class="text-center mt-5 fs-3">Hello {{request.user}}</p>
+<a class="btn btn-primary" href="{% url 'logout' %}" role="button">Logout</a>
+
+{% else %}
+
+<a class="btn btn-primary" href="{% url 'login' %}" role="button">Login</a>
+
+{% endif %}
+
+
+
+{% endblock content %}
